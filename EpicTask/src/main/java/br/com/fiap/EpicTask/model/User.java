@@ -25,12 +25,11 @@ public class User {
 	@Size(min = 8, message = "{user.senha.validation}")
 	private String pass;
 	
-	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
-		this.id = id;
+			this.id = id;
 	}
 	
 	public String getName() {

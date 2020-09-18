@@ -1,4 +1,4 @@
-package br.com.fiap.EpicTask.controller;
+package br.com.fiap.EpicTask.endpoint;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,7 +20,7 @@ import br.com.fiap.EpicTask.repository.UserRepository;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserEndpoint {
 
 	@Autowired
 	private UserRepository repository;
