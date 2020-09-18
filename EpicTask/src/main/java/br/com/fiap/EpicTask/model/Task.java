@@ -1,12 +1,18 @@
 package br.com.fiap.EpicTask.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-@SuppressWarnings("serial")
 @Entity(name = "tasks")
-public class Task extends AbstractEntity{
+public class Task {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 	
 	@NotBlank(message = "task.title.empty")
 	private String title;
@@ -22,7 +28,7 @@ public class Task extends AbstractEntity{
 
 	@Override
 	public String toString() {
-		return "Task [title=" + title + ", description=" + description + ", point=" + point + ", status=" + status
-				+ "]";
+		return "Task [id=" + id + ", title=" + title + ", description=" + description + ", point=" + point + ", status="
+				+ status + "]";
 	}
 }
