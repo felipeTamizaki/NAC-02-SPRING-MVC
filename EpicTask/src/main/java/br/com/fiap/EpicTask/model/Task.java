@@ -5,9 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
-@Entity(name = "tasks")
+@Entity(name = "task")
 public class Task {
 	
 	@Id
@@ -20,15 +19,55 @@ public class Task {
 	@NotBlank(message = "task.descripition.empty")
 	private String description;
 	
-	@Size(max = 3, message = "task.point.validate")
 	private int point;
 	
-	@Size(min = 1, max = 3, message = "task.status.validate")
 	private int status;
 
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int getPoint() {
+		return point;
+	}
+
+	public void setPoint(int point) {
+		this.point = point;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	
 	@Override
 	public String toString() {
 		return "Task [id=" + id + ", title=" + title + ", description=" + description + ", point=" + point + ", status="
 				+ status + "]";
 	}
+
 }

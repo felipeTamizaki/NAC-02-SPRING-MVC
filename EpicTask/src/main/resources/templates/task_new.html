@@ -9,37 +9,52 @@
 	
 		<div class="content">
 			<h2>Nova Tarefa</h2>
-			<form action="/user" method="POST" th:object="${user}">
-				<input 
-					name="name" 
-					type="text" 
-					placeholder="Nome Completo"
-					value="Felipe Correa Tamizaki"
-					th:classappend="${#fields.hasErrors('name')} ? invalid"
+			<form action="/task" method="POST" th:object="${task}">
+				<input
+					name="title"
+					type="text"
+					placeholder="Titulo"
+					th:classappend="${#fields.hasErrors('title')} ? invalid"
 				/>
-				<span th:errors="*{name}"></span>
+				<span th:errors="*{title}"></span>
 				
-				<input 
-					name="email" 
-					type="text" 
-					placeholder="E-mail"
-					th:classappend="${#fields.hasErrors('email')} ? invalid"
+				<input
+					name="description"
+					type="text"
+					placeholder="Descrição"
+					th:classappend="${#fields.hasErrors('description')} ? invalid"
 				/>
-				<span th:errors="*{email}"></span>
+				<span th:errors="*{description}"></span>
 				
-				<input 
-					name="pass" 
-					type="password" 
-					placeholder="Senha" 
-					th:classappend="${#fields.hasErrors('pass')} ? invalid"
-				/>
-				<span th:errors="*{pass}"></span>
+				<label>Pontos</label>
+				<input name="point" type="number" min="1" max="100" id="point">
+				<input name="point" type="range" min="1" max="100" id="range-point">
+				
+				<label>Situação</label>
+				<input name="status" type="number" min="1" max="100" id="status">
+				<input name="status" type="range" min="1" max="100" id="range-status">
 				
 				<div class="actions">
-					<a href="/user" class="btn">Cancelar</a>
+					<a href="/task" class="btn">Cancelar</a>
+					<a href="/task/delete/ + id" class="btn red">Remover</a>
 					<button class="btn blue">Salvar</button>
 				</div>
 			</form>
 		</div>
+		<script>
+            document.querySelector("#range-point").addEventListener("input", 
+                    (e) => document.querySelector("#point").value= (e.target.value) 
+            )
+            document.querySelector("#point").addEventListener("change", 
+                    (e) => document.querySelector("#range-point").value= (e.target.value) 
+            )
+
+            document.querySelector("#range-status").addEventListener("input", 
+                    (e) => document.querySelector("#status").value= (e.target.value) 
+            )
+            document.querySelector("#status").addEventListener("change", 
+                    (e) => document.querySelector("#range-status").value= (e.target.value) 
+            )
+        </script>
 	</body>
 </html>
